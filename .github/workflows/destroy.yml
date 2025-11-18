@@ -55,15 +55,11 @@ jobs:
           -backend-config="key=ci-states/${{ steps.iam.outputs.role_name }}/terraform.tfstate" \
           -input=false
       
-
-
-
-
-- name: Terraform Plan AWS
-  run: terraform plan -var="iam_role_name=${{ steps.iam.outputs.role_name }}"
-  
-  - name: Terraform Apply AWS
-  run: terraform apply -auto-approve -var="iam_role_name=${{ steps.iam.outputs.role_name }}"
-  
-  - name: Terraform Destroy AWS
-  run: terraform destroy -auto-approve -var="iam_role_name=${{ steps.iam.outputs.role_name }}"
+    - name: Terraform Plan AWS
+      run: terraform plan -var="iam_role_name=${{ steps.iam.outputs.role_name }}"
+      
+    - name: Terraform Apply AWS
+      run: terraform apply -auto-approve -var="iam_role_name=${{ steps.iam.outputs.role_name }}"
+      
+    - name: Terraform Destroy AWS
+      run: terraform destroy -auto-approve -var="iam_role_name=${{ steps.iam.outputs.role_name }}"
